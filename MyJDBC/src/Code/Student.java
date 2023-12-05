@@ -3,6 +3,7 @@ package Code;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Student {
@@ -55,12 +56,42 @@ public class Student {
 			String password = "root123";
 
 			Connection conn = DriverManager.getConnection(url+db, username, password);
-			String query = "insert into student (?,?,?)";
+			String query = "insert into student (rollno,sname,semail) values (?,?,?)";
 			PreparedStatement pstm = conn.prepareStatement(query);
 			
-			pstm.setInt(1,10);
-			pstm.execute();
+//			pstm.setInt(1,13);
+//			pstm.setString(2,"anuj");
+//			pstm.setString(3,"anuj@gmail.com");
+//			pstm.execute();
+			
+			pstm.setInt(1,14);
+			pstm.setString(2,"kalpesh");
+			pstm.setString(3,"kalpesh@gmail.com");
+			pstm.executeUpdate();
 			System.out.println("Data inserted Successfully...!");
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void readData() {
+		try {
+			String url = "jdbc:mysql://localhost:3306/anil";
+//			String db="anil";
+			String username = "root";
+			String password = "root123";
+
+			Connection conn = DriverManager.getConnection(url, username, password);
+			Statement stm = conn.createStatement();
+			String query = "select * from student";
+			ResultSet rs=stm.executeQuery(query);
+			while(rs.next()) {
+				System.out.println("Roll no : "+rs.getInt(1));
+				System.out.println("Student Name : "+rs.getString(2));
+				System.out.println("Student E-mail : "+rs.getString(3));
+			}
+			System.out.println(" Table Connected Successfully...!"+rs);
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();

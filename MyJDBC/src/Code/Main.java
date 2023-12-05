@@ -8,6 +8,7 @@ public class Main {
 //		st.createTable();
 //		CRUD operation Create Read Update Delete
 		st.createData();
+		st.readData();
 		
 
 
