@@ -1,0 +1,7 @@
+pojos\ProductCategory.class
+Dao\ProductDaoImpl.class
+Utils\HibernateUtils.class
+Dao\ProductDao.class
+pojos\Product.class
+Tester\TestHibernate.class
+Tester\AddProduct.class
